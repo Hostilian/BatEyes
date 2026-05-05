@@ -1,0 +1,15 @@
+{
+  "name": "bateyes",
+  "private": true,
+  "overrides": {
+    "@types/react": "18.3.18"
+  },
+  "workspaces": [
+    "mobile",
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm run test -w @bateyes/acoustic-core",
+    "bench": "npm run bench -w @bateyes/acoustic-core"
+  }
+}
