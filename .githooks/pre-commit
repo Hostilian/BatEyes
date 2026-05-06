@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -e
+
+echo "Running BatEyes pre-commit checks..."
+npm run mobile:typecheck
+npm test -w mobile
+npm test
+npm run secret:scan

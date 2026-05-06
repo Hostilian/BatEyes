@@ -3,7 +3,15 @@ node_modules/
 .expo/
 *.log
 .DS_Store
+.idea/
 mobile/android/
 mobile/ios/
 *.jks
 *.keystore
+**/.gradle/
+**/.kotlin/
+**/build/
+**/.cxx/
+coverage/
+*.apk
+*.aab

@@ -4,8 +4,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepare": "npm run build",
     "build": "tsc",
     "test": "jest",
+    "test:ci": "jest --runInBand --detectOpenHandles --ci",
     "bench": "node dist/bench.js"
   },
   "devDependencies": {

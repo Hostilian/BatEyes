@@ -11,8 +11,24 @@
   "scripts": {
     "postinstall": "node scripts/patch-gradle-maven-repos.cjs",
     "test": "npm run test -w @bateyes/acoustic-core",
+    "test:core:ci": "npm run test:ci -w @bateyes/acoustic-core",
+    "test:all": "npm run test && npm test -w mobile",
     "bench": "npm run bench -w @bateyes/acoustic-core",
+    "core:dist:check": "node scripts/check-acoustic-dist-sync.cjs",
+    "core:build": "npm run build -w @bateyes/acoustic-core",
     "mobile:apk": "npm run assemble:debug -w mobile",
-    "mobile:typecheck": "npm run typecheck -w mobile"
+    "mobile:apk:clean": "npm run apk:debug:clean -w mobile",
+    "mobile:apk:preflight": "npm run apk:preflight -w mobile",
+    "mobile:eas:preview": "npm run eas:preview -w mobile",
+    "mobile:eas:production": "npm run eas:production -w mobile",
+    "mobile:typecheck": "npm run typecheck -w mobile",
+    "deps:outdated": "npm outdated || exit 0",
+    "secret:scan": "node scripts/secret-scan.cjs",
+    "secret:scan:test": "node --test scripts/secret-scan.test.cjs",
+    "verify:security": "npm run secret:scan && npm audit --audit-level=high",
+    "verify:build": "npm run core:build && npm run mobile:typecheck",
+    "verify:ci": "npm run test:core:ci && npm run test:ci -w mobile && npm run secret:scan:test && npm run secret:scan && npm run core:dist:check",
+    "hooks:install:hint": "echo Configure hooks with: git config core.hooksPath .githooks",
+    "verify": "npm run core:build && npm run core:dist:check && npm run mobile:typecheck && npm run test:all"
   }
 }

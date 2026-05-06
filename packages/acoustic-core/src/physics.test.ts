@@ -10,4 +10,13 @@ describe('physics', () => {
   it('drops in cold air', () => {
     expect(speedOfSoundDryAir(10)).toBeLessThan(speedOfSoundDryAir(20));
   });
+
+  it('increases in warm air', () => {
+    expect(speedOfSoundDryAir(35)).toBeGreaterThan(speedOfSoundDryAir(20));
+  });
+
+  it('stays finite across extreme but representable temperatures', () => {
+    expect(Number.isFinite(speedOfSoundDryAir(-100))).toBe(true);
+    expect(Number.isFinite(speedOfSoundDryAir(120))).toBe(true);
+  });
 });
