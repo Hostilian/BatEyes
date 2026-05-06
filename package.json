@@ -9,7 +9,10 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "node scripts/patch-gradle-maven-repos.cjs",
     "test": "npm run test -w @bateyes/acoustic-core",
-    "bench": "npm run bench -w @bateyes/acoustic-core"
+    "bench": "npm run bench -w @bateyes/acoustic-core",
+    "mobile:apk": "npm run assemble:debug -w mobile",
+    "mobile:typecheck": "npm run typecheck -w mobile"
   }
 }

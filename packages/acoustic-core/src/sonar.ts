@@ -99,7 +99,11 @@ export class SonarAnalyzer {
     }
 
     const smooth = smoothMovingAverage(corr, 5);
-    const maxAbs = Math.max(1e-6, ...Array.from(smooth).map((v) => Math.abs(v)));
+    let maxAbs = 1e-6;
+    for (let i = 0; i < smooth.length; i++) {
+      const v = Math.abs(smooth[i]!);
+      if (v > maxAbs) maxAbs = v;
+    }
     const threshold = options?.peakThreshold ?? Math.max(0.25, maxAbs * 0.35);
     const sepSamples = Math.max(
       Math.floor(sr * (options?.minSeparationMs ?? 2.5) * 0.001),
