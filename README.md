@@ -74,6 +74,47 @@ If dependencies or Gradle caches get out of sync:
 npm run mobile:apk:clean
 ```
 
+### Android Studio demo runbook
+
+Use this when you want a reliable live demo directly from Android Studio.
+
+1. From repo root, run:
+
+```bash
+npm install
+npm run mobile:apk:preflight
+npm run prebuild:android -w mobile
+```
+
+2. Open Android Studio and select `mobile/android`.
+3. Let Gradle sync complete, then pick the `app` run configuration.
+4. Start an emulator (or connect a device with USB debugging), then click **Run**.
+5. If Metro is not running yet, start it in a terminal:
+
+```bash
+cd mobile
+npx expo start --dev-client
+```
+
+Demo-ready quick check:
+- Launch app and grant microphone permission.
+- Trigger **Pulse** once and verify values update.
+- Open **Polar**, record a short sweep, then test **Export** and **Import**.
+
+One-command options from repo root:
+
+```bash
+npm run demo:ready
+```
+
+Builds/verifies everything needed for a stable demo and produces debug APK.
+
+```bash
+npm run demo:android:install
+```
+
+Installs the debug APK to the currently connected emulator/device and launches `BatEyes`.
+
 Mirror-friendly prebuild path (for network-constrained environments):
 
 ```bash

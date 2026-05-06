@@ -28,6 +28,8 @@
     "verify:security": "npm run secret:scan && npm audit --audit-level=high",
     "verify:build": "npm run core:build && npm run mobile:typecheck",
     "verify:ci": "npm run test:core:ci && npm run test:ci -w mobile && npm run secret:scan:test && npm run secret:scan && npm run core:dist:check",
+    "demo:ready": "node scripts/demo-ready.cjs",
+    "demo:android:install": "node scripts/demo-android-install.cjs",
     "hooks:install:hint": "echo Configure hooks with: git config core.hooksPath .githooks",
     "verify": "npm run core:build && npm run core:dist:check && npm run mobile:typecheck && npm run test:all"
   }
